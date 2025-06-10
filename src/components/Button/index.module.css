@@ -1,0 +1,11 @@
+.choooseButton {
+    background-color: #4d4d4d;
+    color: rgb(184, 184, 184);
+    width: 10rem;
+    height: 2.5rem;
+}
+
+.choooseButtonActive:hover {
+    background-color: #555555;
+    color: white;  
+}

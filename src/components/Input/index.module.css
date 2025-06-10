@@ -1,0 +1,34 @@
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    gap: .5rem;
+    align-items: center;
+}
+
+label {
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 80%;
+    font-weight: 500;
+}
+
+input {
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+    padding: 0rem  0.5rem ;
+}
+
+input:focus {
+    border: none;
+}
+

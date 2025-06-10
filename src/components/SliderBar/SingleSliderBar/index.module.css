@@ -1,0 +1,137 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: var(--sliderBar-width);
+    --show-alert: hidden;
+    --slider-track-height-percent: 0.6 ;   /* 轨道高度 相对 slider bar 高度的比例 */
+}
+
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+    background-color: inherit;
+}
+
+.sliderBarValue {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: var(--selected);
+    height: 1.5rem;
+    top: -2.5rem;
+    padding: .1rem .3rem;
+    box-shadow: 0px 0px 5px var(--selected-color);
+    background-color: var(--sliderBar-color);
+    transform: translateX(-50%);
+    border-radius: .2rem;
+    font-size: 80%;
+    z-index: 1;
+    visibility: var(--show-alert);
+}
+
+.sliderBarValue::before {
+    content: '';
+    position: absolute;
+    border: solid  .5rem transparent;
+    border-top-color: var(--sliderBar-color);
+    bottom: -.95rem;
+    z-index: 0 ;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.UnitContainer {
+    display: flex;
+    width: 100%;
+    height: 1rem;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    font-size: 80%;
+    font-weight: inherit;
+    color: inherit;
+    padding: calc(var(--sliderBar-height) * 0.5)  0px;
+    background-color: inherit;
+}
+
+
+
+.min {
+    transform: translateX(-50%);
+}
+
+.middle {
+    transform: translateX(50%);
+}
+
+.max {
+    transform: translateX(50%);
+}
+
+
+/* 设置滑块轨道 */
+.sliderInput[type="range"] {
+    appearance: none;
+    position: relative;
+    padding: 0;
+    outline: 0;
+    margin: 0;
+    width: 100%;
+    height: calc(var(--sliderBar-height) * var(--slider-track-height-percent));
+    border-radius: calc(var(--sliderBar-height) * var(--slider-track-height-percent)); 
+    background: linear-gradient(var(--selected-color),var(--selected-color)) no-repeat var(--unSelected-color);
+    background-size: calc(var(--selected)) 100%; 
+}
+
+/* 自定义滑块按钮 */
+/* Internet Explorer 浏览器 */
+/* input[type="range"]::-ms-thumb,  */
+/* Firefox 浏览器兼容 */
+/* input[type="range"]::-moz-range-thumb,  */
+/* chrome 浏览器兼容 */
+.sliderInput[type="range"]::-webkit-slider-thumb 
+{
+    appearance: none;  
+    border: 0;
+    position: absolute;
+    top: calc(var(--sliderBar-height) * var(--slider-track-height-percent) * 0.5);
+    height: var(--sliderBar-height);
+    width: var(--sliderBar-width);
+    border-radius: var(--sliderBar-border-radius);
+    background-color: var(--sliderBar-color);
+    cursor: pointer;
+    left: var(--selected);
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 1;
+}
+
+.sliderInput:active ~ .sliderBarValue {
+    --show-alert: visible;
+}
+
+
+/* 自定义滑块轨道 */
+/* Internet Explorer 浏览器兼容 */
+/* .sliderInput[type="range"]::-ms-track,  */
+/* Firefox 浏览器兼容 */
+/* input[type="range"]::-moz-range-track,  */
+/* chrome 浏览器兼容 */
+/* input[type="range"]::-webkit-slider-runnable-track  {
+    appearance: none;
+    height: var(--height);
+    width: var(--width);
+    background-color: rebeccapurple;
+    border-radius: calc(var(--sliderBar-height) * var(--slider-track-height-percent)); 
+    overflow: hidden;
+} */
+
+

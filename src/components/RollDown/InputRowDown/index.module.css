@@ -1,0 +1,79 @@
+
+
+
+.rollDownSelecterContainer {
+    width:max-content;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: .5rem;
+    box-sizing: border-box;
+    --rowdown-visible: hidden;
+}
+
+.rollDownInput,
+.inputWarning {
+    width: 100%;
+    height: 100%;
+    padding: .3rem .5rem;
+    font-weight: 400;
+}
+
+.rollDownInput::placeholder {
+    text-align: center;
+}
+
+.rollDownSelecterContainer:hover {
+    --rowdown-visible:visible;
+}
+
+
+
+.rollDownOptions {
+    position: absolute;
+    bottom: -6rem;
+    z-index: 1;
+    width: 100%;
+    max-width: 100%;
+    height: 6rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    gap: .2rem;
+    border-radius: .3rem;
+    visibility: hidden;
+    background-color: #2e2e2e;
+    padding: .4rem .2rem;
+    justify-content: space-around;
+    visibility: var(--rowdown-visible);
+}
+
+.option {
+    user-select: none;
+    font-size: 75%;
+    width: 100%;
+    height: 100%;
+}
+
+.option:hover {
+    background-color: gray;
+}
+
+
+.rowdownIcon::after {
+    position: absolute;
+    content: '◀';
+    right: .5rem;
+    font-size: 80%;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all .1S;
+    color: inherit;
+    opacity: .7;
+}
+
+.rowdownIcon:hover::after {
+    content: '▼';
+    font-size: 110%;
+}
+
+

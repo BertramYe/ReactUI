@@ -1,0 +1,185 @@
+
+
+.containerH,
+.containerV {
+    display: flex;
+    justify-content:space-around;
+    --min-bar-tip-show : hidden;
+    --max-bar-tip-show : hidden;
+    gap: .5rem;
+    padding: 1rem;
+    width: fit-content;
+    height: fit-content;
+}
+.containerV {
+    flex-direction: row;
+    
+}
+.containerH {
+    flex-direction: column;
+}
+
+.titleH,
+.titleV {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.titleH {
+    flex-direction: row;
+}
+.titleV {
+    flex-direction: column;
+    writing-mode: vertical-lr; /* 从上到下，从左到右 ， 根据需要设置title 样式，但是最终还是按照自己的需求调整 title 的样式就好*/
+    text-orientation: mixed;   /* 汉字/英文字母正常排版 */
+}
+
+
+.barContainerH, 
+.barContainerV {
+    display: flex;
+    width: var(--slider-track-width);
+    height: var(--slider-track-height);
+    box-sizing: border-box;
+    position: relative;
+    border-radius: var(--slider-track-height);
+    background: var(--track-bg)
+}
+
+.barContainerH {
+    flex-direction: row;
+}
+.barContainerV {
+    flex-direction: column;
+}
+
+
+.minBar,
+.maxBar
+{
+    /* aspect-ratio: 1; */
+    position: absolute;
+    width: var(--slider-bar-width);
+    height: var(--slider-bar-height);
+    border-radius: var(--slider-bar-border-radius);
+    background-color: var(--slider-bar-bg-color);
+    box-shadow: 0px 0px 5px  var(--slider-bar-bg-color);
+    color: var(--slider-bar-color);
+}
+
+
+/* 利用伪元素显示我们当前选择的值 */
+.maxBarTip::after,
+.minBarTip::after {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(calc(0px - var(--slider-bar-height) * 2 - 6px) );
+    background-color: var(--slider-bar-bg-color);
+    padding: 3px;
+    border-radius: 2px;
+    box-shadow: 0px 0px 5px  var(--slider-bar-bg-color);
+    text-align: center;
+    font-size: inherit;
+    color: inherit;
+    font-weight: 400;
+    min-width: var(--slider-bar-height);
+}
+
+.maxBarTip:active {
+    --max-bar-tip-show: visible;
+}
+
+.minBarTip:active {
+    --min-bar-tip-show: visible;
+}
+
+.maxBarTip::after {
+    content: attr(max-value);
+    visibility: var(--max-bar-tip-show);
+}
+
+.minBarTip::after {
+    content: attr(min-value);
+    visibility: var(--min-bar-tip-show);
+}
+
+.maxBarTip::before,
+.minBarTip::before {
+    content: '';
+    position: absolute;
+    border: solid calc(var(--slider-bar-height) * 0.5) transparent;
+    border-top-color: var(--slider-bar-bg-color);
+    left: 50%;
+    transform: translateX(-50%) translateY(calc(0px - var(--slider-bar-height) * 0.5));
+} 
+
+.maxBarTip::before {
+    visibility: var(--max-bar-tip-show);
+}
+
+.minBarTip::before {
+    visibility: var(--min-bar-tip-show);
+}
+
+
+
+/* 横向的 */
+.minBarH {
+    transform: translateX(calc(var(--mix-position) - var(--slider-bar-width)/2))  translateY(calc(var(--slider-track-height) / 2 - var(--slider-bar-height) / 2 ) );
+}
+.maxBarH {
+    transform: translateX(calc(var(--max-position) - var(--slider-bar-width)/2) )  translateY(calc(var(--slider-track-height) / 2 - var(--slider-bar-height) / 2 ) );
+}
+
+
+/* 纵向的 */
+.minBarV {
+    transform: translateX(calc(var(--slider-track-width) / 2 - var(--slider-bar-width) / 2 ))  translateY(calc(var(--mix-position) - var(--slider-bar-height)/2));
+}
+
+.maxBarV {
+    transform: translateX(calc(var(--slider-track-width) / 2 - var(--slider-bar-width) / 2 ))   translateY(calc(var(--max-position) - var(--slider-bar-height)/2));
+}
+
+.unitContainerV,
+.unitContainerH {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 80%;
+    font-weight: inherit;
+    color: inherit;
+}
+
+.unitContainerH {
+    flex-direction: row ;
+}
+
+.unitContainerV {
+  flex-direction: column;
+}
+
+
+.middleUnitH {
+    transform: translateX(50%);
+}
+
+.middleUnitV {
+    transform: translateY(10%);
+}
+
+.minUnitV {
+    transform: translateY(-50%);
+}
+.minUnitH {
+    transform: translateX(-50%);
+}
+
+.maxUnitV {
+    transform: translateY(50%);
+}
+
+.maxUnitH {
+    transform: translateX(50%);
+}
